@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--[if IE 6]><html lang="en" class="ielt7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 7]><html lang="en" class="ie7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8 ielt9 ielt10 en"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9 ielt10 en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>版本回退</title>
+<link rel="stylesheet" href="../css/index.css" />
+<link rel="stylesheet" href="../css/howgit.css" />
+<link rel="stylesheet" href="../css/global.css" />
+<script>
+	
+</script>
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<div class="index-nav">
+				<ul class="clear">
+					<li>
+						<a href="javascript:;" target="_blank">首页</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">JS分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">css分享</a>
+					</li>
+					<li class="on">
+						<a href="howgit_cp1.html">Git分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">重构那点事</a>
+					</li>
+				</ul>
+			</div>
+			<div class="git_main clear">
+				<div class="git_right">
+					<div class="content_right">
+						<h1>版本回退</h1>
+						<div class="text retract">
+							<div class="separate">
+								<p>
+									为了配合本章内容，我们再来修改一次to8to.txt这个文件，修改内容如下：
+								</p>
+								<div class="example">
+									<p>
+										Git is a distributed version control system.
+									</p>
+									<p>
+										Git is free software distributed under the GPL.
+									</p>
+									<p class="no_retract gycol">
+										然后运行命令：
+									</p>
+									<p>
+										$ git add to8to.txt
+									</p>
+									<p>
+										$ git commit -m “add GPL”
+									</p>
+									<p class="gycol">
+										提交完成，现在我们再回顾一下我们to8to.txt这个文件总共有几个版本提交到了仓库
+									</p>
+									<p class="gycol">
+										<h2>版本1：</h2>
+										<p>
+											add a file    -- 提交时自己写的注释信息添加了一个空的txt文件
+
+										</p>
+									</p>
+									<p class="gycol">
+										<h2>版本2：</h2>
+										<p>
+											add two line
+											<p>
+												内容为：
+											</p>
+											<p>
+												Git is a distributed version control system.
+											</p>
+											<p>
+												Git is free software.
+											</p>
+										</p>
+									</p>
+									<p class="gycol">
+										<h2>版本3：</h2>
+										<p>
+											add GPL
+											<p>
+												内容为：
+											</p>
+											<p>
+												Git is a distributed version control system.
+											</p>
+											<p>
+												Git is free software distributed under the GPL.
+											</p>
+										</p>
+									</p>
+									<p class="no_retract gycol">
+										这些历史记录，我们可以用git命令 $ git log 查看：
+									</p>
+									<img src="../img/png/gitpics/git7.png" alt="" />
+									<p class="no_retract gycol">
+										这里只有3个版本记录，版本信息一目了然。而在我们实际工作中，版本记录成千上万，如果用 $ git log 查看，就会让人眼花缭乱
+									</p>
+									<p class="no_retract gycol">
+										针对这种情况，我们可以美化一下输出信息
+									</p>
+									<p class="no_retract gycol">
+										运行 $ git log --pretty=oneline
+									</p>
+									<img src="../img/png/gitpics/git8.png" alt="" />
+									<p class="no_retract gycol">
+										这样，每次版本信息就显示为一行了
+									</p>
+									<p class="no_retract gycol">
+										这里的一大串c714184… 6e9dda325… e31e0fd3… 这些是commit id,也就是版本号。Git的版本号和SVN不同，SVN是1，2，3递增的数字
+									</p>
+									<p class="no_retract gycol">
+										每个人的版本号都不一样，必须以自己的为准。
+									</p>
+									<p class="no_retract gycol">
+										为什么commit id要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。
+									</p>
+									<p class="no_retract gycol">
+										若要更加直观的查看历史版本，可以右键to8to.txt这个文件，点击Git History
+									</p>
+									<img src="../img/png/gitpics/git9.png" alt="" />
+									<p class="no_retract gycol">
+										每提交一个版本，Git就会把它们串成一条线，黄色小圆点表示当前的版c本
+									</p>
+									<p class="no_retract gycol">
+										若要更加直观的查看历史版本，可以右键to8to.txt这个文件，点击Git History
+									</p>
+									<p class="no_retract gycol">
+										在Git中，HEAD表示当前版本，也就是当前提交的c714184…（需要注意的是我的版本号和你们的不一样，以自己的为准）。HEAD^表示上一个版本，HEAD^^表示上上个版本，当要回退到上100个版本的时候，不容易数过来，所以写成HEAD~100
+
+									</p>
+									<p class="no_retract gycol">
+										现在，我们动手把当前版本回退到上一个版本 add two line，用到的命令为 $ git reset
+									</p>
+									<p class="no_retract">
+										$ git reset --hard HEAD^
+									</p>
+									<img src="../img/png/gitpics/git10.png" alt="" />
+									<img src="../img/png/gitpics/git12.png" alt="" />
+									<p class="no_retract gycol">
+										这时候，看看to8to.txt里的内容是不是 add two line 那个版本的内容，运行 $ cat to8to.txt
+									</p>
+									<img src="../img/png/gitpics/git11.png" alt="" />
+									<p class="no_retract gycol">
+										大功告成！现在我又后悔想回退到上一个版本，但是用 $ git log查看当前版本库状态，之前那个最新版本 “add GPL”已经不见了，怎么办？
+									</p>
+									<img src="../img/png/gitpics/git13.png" alt="" />
+									<p class="no_retract gycol">
+										办法还是有的，只要我们的命令窗口还没关掉，就可以通过之前讲的commit id 来回到之前的那个版本
+									</p>
+									<p class="no_retract">
+										$ git reset --hard c714184
+									</p>
+									<img src="../img/png/gitpics/git14.png" alt="" />
+									<p class="no_retract gycol">
+										版本号没必要写全，前面几位就可以了，但也不要只写一两位
+									</p>
+									<p class="no_retract gycol">
+										这时你再看看你的to8to.txt的内容，是不是回到add GPL这个版本了，答案是必须的。
+									</p>
+									<img src="../img/png/gitpics/git15.png" alt="" />
+									<p class="no_retract gycol">
+										Git的版本回退速度非常快，因为Git内部有个指向当前版本的HEAD指针，当你回退版本的时候，Git仅仅是把HEAD重新指向“append GPL”。
+									</p>
+									<p class="no_retract gycol">
+										所以，你让HEAD指向哪个版本，你就把当前版本定位在了哪。
+									</p>
+									<p class="no_retract gycol">
+										现在，你回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的commit id ，怎么办？
+									</p>
+									<p class="no_retract gycol">
+										在Git中，有一种药，叫后悔药。所以，不用慌张，吃了就不用后悔了。
+									</p>
+									<p class="no_retract gycol">
+										我现在的版本的是”add GPL”，我回退到 “add two line”
+									</p>
+									<p class="no_retract">
+										$ git reset --hard HEAD^
+									</p>
+									<p class="no_retract gycol">
+										这时的版本是 “add two line”，再想恢复到 “add GPL”，就必须找到“add GPL” 的commit id。Git提供了一个命令	 $ git reflog，用来记录你的每一次命令，我们运行它：
+									</p>
+									<img src="../img/png/gitpics/git16.png" alt="" />
+									<p class="no_retract gycol">
+										第四行显示add GPL 的commit id 为c714184，终于找到了，可以回到未来了
+									</p>
+									<p class="no_retract">
+										$ git reset --hard c714184
+									</p>
+									<p class="no_retract gycol">
+										果然回来了
+									</p>
+								</div>
+								<div class="sum">
+									<h3>小结：</h3>
+									<p>
+										$ git reset --hard HEAD^ 回到上一个版本
+									</p>
+									<p>
+										$ git reset --hard commit id 通过commit id 回到指定的版本
+									</p>
+									<p>
+										$ git reflog 查看每一次命令
+									</p>
+									<p>
+										$ git log 查看版本历史记录
+									</p>
+									<p>
+										HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset –hrad commit id
+									</p>
+									<p>
+										穿梭前，用git log 可以查看历史，以便确定要回退到哪个版本。
+									</p>
+									<p>
+										要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="git_left">
+					<div class="nav_list">
+						<ul>
+							<li>
+								<a href="javascript:;">Git简介</a>
+							</li>
+							<li>
+								<a href="howgit_cp2.html">Git的安装</a>
+							</li>
+							<li>
+								<a href="howgit_cp3.html">创建版本库</a>
+							</li>
+							<li>
+								<a href="howgit_cp4.html">添加文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp5.html">修改文件</a>
+							</li>
+							<li class="on">
+								<a href="howgit_cp6.html">版本回退</a>
+							</li>
+							<li>
+								<a href="howgit_cp7.html">工作区和暂存区</a>
+							</li>
+							<li>
+								<a href="howgit_cp8.html">管理修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp9.html">撤销修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp10.html">删除文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp11.html">远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp12.html">添加远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp13.html">分支管理</a>
+							</li>
+							<li>
+								<a href="howgit_cp14.html">创建与合并分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp15.html">解决冲突</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">分支管理策略</a>
+							</li>
+							<li>
+								<a href="howgit_cp12.html">Bug分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp13.html">Feature分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp14.html">多人协作</a>
+							</li>
+							<li>
+								<a href="howgit_cp15.html">使用GitHub</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">忽略特殊文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">配置别名</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">总结</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

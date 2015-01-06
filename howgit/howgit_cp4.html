@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--[if IE 6]><html lang="en" class="ielt7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 7]><html lang="en" class="ie7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8 ielt9 ielt10 en"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9 ielt10 en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>添加文件</title>
+<link rel="stylesheet" href="../css/index.css" />
+<link rel="stylesheet" href="../css/howgit.css" />
+<link rel="stylesheet" href="../css/global.css" />
+<script>
+	
+</script>
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<div class="index-nav">
+				<ul class="clear">
+					<li>
+						<a href="javascript:;" target="_blank">首页</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">JS分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">css分享</a>
+					</li>
+					<li class="on">
+						<a href="howgit_cp1.html">Git分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">重构那点事</a>
+					</li>
+				</ul>
+			</div>
+			<div class="git_main clear">
+				<div class="git_right">
+					<div class="content_right">
+						<h1>添加文件</h1>
+						<div class="text retract">
+							<div class="example">
+								<h2>第一步：</h2>
+								<p>
+									$ touch to8to.txt
+									<span class="expl">--创建一个名为 to8to.txt 的txt文件。当然，也可以直接在工作区右键建立这个文件</span>
+								</p>
+							</div>
+							<div class="example">
+								<h2>第二步：</h2>
+								<p>
+									$ touch to8to.txt
+									<span class="expl">--创建一个名为 to8to.txt 的txt文件。当然，也可以直接在工作区右键建立这个文件</span>
+								</p>
+							</div>
+							<div class="example">
+								<h2>第三步：</h2>
+								<p>
+									$ git commit -m “add a file”
+									<span class="expl">--"-m" 后面输入的是本次提交的说明，视情况编写</span>
+								</p>
+							</div>
+							<div class="example">
+								<h2>如果你在提交之前添加或者修改了多个文件，可以在最后commit，如下：</h2>
+								<p>
+									$ git add to8to1.txt
+								</p>
+								<p>
+									$ git add to8to2.txt
+								</p>
+								<p>
+									$ git add to8to3.txt
+								</p>
+								<p>
+									$ git commit -m “add three file”
+								</p>
+								<img src="../img/png/gitpics/git2.png" alt="" />
+							</div>
+							<div class="sum">
+								<h3>小结：</h3>
+								<p>
+									1，touch xxx  创建文件
+								</p>
+								<p>
+									2，git add xxx 添加文件（新建的文件或者是修改的文件）
+								</p>
+								<p>
+									3，git commit -m “xxx” 提交文件
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="git_left">
+					<div class="nav_list">
+						<ul>
+							<li>
+								<a href="javascript:;">Git简介</a>
+							</li>
+							<li>
+								<a href="howgit_cp2.html">Git的安装</a>
+							</li>
+							<li>
+								<a href="howgit_cp3.html">创建版本库</a>
+							</li>
+							<li class="on">
+								<a href="howgit_cp4.html">添加文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp5.html">修改文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp6.html">版本回退</a>
+							</li>
+							<li>
+								<a href="howgit_cp7.html">工作区和暂存区</a>
+							</li>
+							<li>
+								<a href="howgit_cp8.html">管理修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp9.html">撤销修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp10.html">删除文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp11.html">远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp12.html">添加远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp13.html">分支管理</a>
+							</li>
+							<li>
+								<a href="howgit_cp14.html">创建与合并分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp15.html">解决冲突</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">分支管理策略</a>
+							</li>
+							<li>
+								<a href="howgit_cp12.html">Bug分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp13.html">Feature分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp14.html">多人协作</a>
+							</li>
+							<li>
+								<a href="howgit_cp15.html">使用GitHub</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">忽略特殊文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">配置别名</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">总结</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

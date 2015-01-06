@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--[if IE 6]><html lang="en" class="ielt7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 7]><html lang="en" class="ie7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8 ielt9 ielt10 en"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9 ielt10 en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改文件</title>
+<link rel="stylesheet" href="../css/index.css" />
+<link rel="stylesheet" href="../css/howgit.css" />
+<link rel="stylesheet" href="../css/global.css" />
+<script>
+	
+</script>
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<div class="index-nav">
+				<ul class="clear">
+					<li>
+						<a href="javascript:;" target="_blank">首页</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">JS分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">css分享</a>
+					</li>
+					<li class="on">
+						<a href="howgit_cp1.html">Git分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">重构那点事</a>
+					</li>
+				</ul>
+			</div>
+			<div class="git_main clear">
+				<div class="git_right">
+					<div class="content_right">
+						<h1>修改文件</h1>
+						<div class="text retract">
+							<div class="separate">
+								<p>
+									现在，我们成功添加并且提交了to8to.txt。接下来，我们修改这个文件，内容如下：
+								</p>
+								<div class="example">
+									<p>
+										Git is a distributed version control system.
+									</p>
+									<p>
+										Git is free software.
+									</p>
+								</div>
+								<div class="example">
+									<p>
+										$ git status <span class="expl">
+										-- 查看当前仓库状态</span>
+									</p>
+									<p>
+										$ git status 命令可以让我们时刻掌握仓库当前的状态，上面的命令告诉我们，to8to.txt被修改过了，但还没有准备提交的修改。
+									</p>
+									<img src="../img/png/gitpics/git3.png" alt="" />
+									<p class="gycol">
+										虽然$ git status 命令告诉我们to8to.txt被修改了，但如果能看看具体修改了什么内容，自然是极好的。比如你休假两周回来，第一天上班时，已经记不清上次怎么修改的to8to.txt，所以，需要用$ git diff 这个命令查看
+									</p>
+									<img src="../img/png/gitpics/git4.png" alt="" />
+									<p class="gycol">
+										知道对to8to.txt做了什么修改之后，就可以放心的把他提交到仓库了。
+									</p>
+									<p class="gycol">
+										提交修改和提交新文件是一样的两步，顺便复习一下之前学过的添加和提交：
+									</p>
+									<p>
+										$ git add to8to.txt
+									</p>
+									<p>
+										$ git commit –m "add two line"
+									</p>
+									<img src="../img/png/gitpics/git5.png" alt="" />
+									<p class="gycol">
+										提交之后，我们再用 $ git status 看看当前的仓库状态
+									</p>
+									<img src="../img/png/gitpics/git6.png" alt="" />
+									<p class="gycol">
+										Git 告诉我们当前工作目录是干净的（working directory clean），没有需要提交的修改
+									</p>
+									<img src="../img/png/gitpics/git7.png" alt="" />
+								</div>
+								<div class="sum">
+								<h3>小结：</h3>
+								<p>
+									1，$ git status 查看当前仓库状态
+								</p>
+								<p>
+									2，$ git diff 查看修改的具体内容
+								</p>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="git_left">
+					<div class="nav_list">
+						<ul>
+							<li>
+								<a href="javascript:;">Git简介</a>
+							</li>
+							<li>
+								<a href="howgit_cp2.html">Git的安装</a>
+							</li>
+							<li>
+								<a href="howgit_cp3.html">创建版本库</a>
+							</li>
+							<li>
+								<a href="howgit_cp4.html">添加文件</a>
+							</li>
+							<li class="on">
+								<a href="howgit_cp5.html">修改文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp6.html">版本回退</a>
+							</li>
+							<li>
+								<a href="howgit_cp7.html">工作区和暂存区</a>
+							</li>
+							<li>
+								<a href="howgit_cp8.html">管理修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp9.html">撤销修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp10.html">删除文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp11.html">远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp12.html">添加远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp13.html">分支管理</a>
+							</li>
+							<li>
+								<a href="howgit_cp14.html">创建与合并分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp15.html">解决冲突</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">分支管理策略</a>
+							</li>
+							<li>
+								<a href="howgit_cp12.html">Bug分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp13.html">Feature分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp14.html">多人协作</a>
+							</li>
+							<li>
+								<a href="howgit_cp15.html">使用GitHub</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">忽略特殊文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">配置别名</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">总结</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
