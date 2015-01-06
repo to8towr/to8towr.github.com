@@ -1,3 +1,20 @@
 #Ignore all logfiles and tempfiles.log
 .idea/
 _site/
+
+# Windows:
+	Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+# My configurations:
+db.ini
+deploy_key_rsa
