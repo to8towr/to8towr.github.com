@@ -1,9 +1,9 @@
 @charset "utf-8";
 body{background: url(../img/png/bg.gif) repeat;}
 .content{width: 100%;height: 100%;position: relative;}
-.main{width: 1220px;margin: 100px auto;}
+.main{width: 1220px;margin: 50px auto;}
 .index-nav li{float: left;position: relative;}
-.index-nav a{color: #fff;opacity: .5;font-size: 36px;margin-right: 30px;
+.index-nav a{color: #fff;opacity: .5;font-size: 36px;margin-right: 70px;
 -webkit-transition: all 500ms linear;
 -o-transition: all 500ms linear;
 -moz-transition: all 500ms linear;
@@ -20,3 +20,4 @@ transition: all 500ms linear;
 .index-nav dd a{font-size: 14px;color: #222;opacity: 1;margin-right: 0;}
 .index-nav dt{margin-top:-25px;padding-top:15px;height:10px;}
 .index-nav dd{background: #fff;height: 30px;line-height: 30px;text-align: center;}
+.index-nav .on a{opacity: 1;}

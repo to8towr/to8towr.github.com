@@ -1,0 +1,20 @@
+@charset "utf-8";
+.git_main{width: 1220px;margin: 0 auto;height: 100px;margin-top: 50px;}
+.git_left{float: left;width: 179px;border-right: 1px solid #ccc;}
+.git_right{float: right;width: 970px;font-size: 14px;}
+.git_left .nav_list{padding: 0 20px;}
+.git_left .nav_list li{padding: 10px 0;}
+.git_left .nav_list li a{font-size: 16px;color: #01a469;}
+.git_left .nav_list li a:hover{color: #00aa46;}
+.git_left .nav_list .on a{color: #00aa46;}
+.content_right h1{font-size: 24px;color: #333;font-weight: bold;color: #fff;margin-bottom: 10px;}
+.text h2{color: #666;font-size: 16px;color: #fff;}
+.retract{padding-left: 30px;}
+.text p{padding-left: 20px;color: #ccc;line-height: 24px;}
+.text p a{color: #01a469;}
+.text .separate{margin-bottom: 20px;}
+.text .example{padding-left: 26px;}
+.text .example p{color: #fff;}
+.text .redbold{font-weight: bold;color: #f90;}
+.text .expl{color: #999;} 
+.example img{margin-left: 20px;}
