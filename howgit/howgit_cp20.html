@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--[if IE 6]><html lang="en" class="ielt7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 7]><html lang="en" class="ie7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8 ielt9 ielt10 en"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9 ielt10 en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>标签管理</title>
+<link rel="stylesheet" href="../css/index.css" />
+<link rel="stylesheet" href="../css/howgit.css" />
+<link rel="stylesheet" href="../css/global.css" />
+<script>
+	
+</script>
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<div class="index-nav">
+				<ul class="clear">
+					<li>
+						<a href="javascript:;" target="_blank">首页</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">JS分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">css分享</a>
+					</li>
+					<li class="on">
+						<a href="howgit_cp1.html">Git分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">重构那点事</a>
+					</li>
+				</ul>
+			</div>
+			<div class="git_main clear">
+				<div class="git_right">
+					<div class="content_right">
+						<h1>标签管理</h1>
+						<div class="text retract">
+							<div class="separate">
+								<p>
+									发布一个版本时，我们通常先在版本库中打一个标签，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。
+								</p>
+								<p>
+									Git的标签虽然是版本库的快照，但其实它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。
+								</p>
+								<div class="example">
+									<h2>
+										创建标签：
+									</h2>
+									<p class="gycol">
+										在Git中打标签非常简单，首先，切换到需要打标签的分支上：
+									</p>
+									<p>
+										$ git checkout master
+									</p>
+									<p class="gycol">
+										然后，敲命令<span class="lineihigh">git tag tag-name</span>就可以打一个新标签：
+									</p>
+									<p>
+										$ git tag v1.0
+									</p>
+									<p class="gycol">
+										可以用命令git tag查看所有标签：
+									</p>
+									<p>
+										$ git tag
+									</p>
+									<img src="../img/png/gitpics/git64.png" alt="" />
+									<p class="gycol">
+										默认标签是打在最新提交的commit上的。有时候，如果忘了打标签，比如，现在已经是周五了，但应该在周一打的标签没有打，怎么办？
+									</p>
+									<p class="gycol">
+										方法是找到历史提交的commit id，然后打上就可以了：
+									</p>
+									<img src="../img/png/gitpics/git65.png" alt="" />
+									<p class="gycol">
+										注意，标签不是按时间顺序列出，而是按字母排序的。可以用<span class="lineihigh">git show tag-name</span>查看标签信息：
+									</p>
+									<p class="gycol">
+										可以看到，v0.9确实打在 “Merge branch ‘dev’ “ 这次提交上。
+									</p>
+									<p class="gycol">
+										还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字：
+									</p>
+									<p>
+										$ git tag -a v0.1 -m "version 0.1 released" 7c50fd7
+									</p>
+									<img src="../img/png/gitpics/git66.png" alt="" />
+									<h2>
+										操作标签：
+									</h2>
+									<p class="gycol">
+										如果标签打错了，也可以删除：
+									</p>
+									<p>
+										$ git tag -d v0.1
+									</p>
+									<p class="gycol">
+										因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。
+									</p>
+									<p class="gycol">
+										如果标签打错了，也可以删除：
+									</p>
+									<p class="gycol">
+										如果要推送某个标签到远程，使用命令<span class="lineihigh">git push origin tag-name</span>
+									</p>
+									<p>
+										$ git push origin v1.0
+									</p>
+									<p class="gycol">
+										或者，一次性推送全部尚未推送到远程的本地标签：
+									</p>
+									<p>
+										$ git push origin –tags
+									</p>
+									<p class="gycol">
+										如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：
+									</p>
+									<p>
+										$ git tag -d v0.9
+									</p>
+									<p class="gycol">
+										然后，从远程删除。删除命令也是push，但是格式如下：
+									</p>
+									<p>
+										$ git push origin :refs/tags/v0.9
+									</p>
+									<p class="gycol">
+										要看看是否真的从远程库删除了标签，可以登陆GitHub查看。
+									</p>
+									<img src="../img/png/gitpics/git67.png" alt="" />
+								</div>
+								<div class="sum">
+									<h3>小结：</h3>
+									<p>
+										命令git tag tag-name用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+									</p>
+									<p>
+										git tag -a tag-name -m "blablabla..."可以指定标签信息；
+									</p>
+									<p>
+										命令git tag可以查看所有标签。
+									</p>
+									<p>
+										命令git push origin tag-name可以推送一个本地标签；
+									</p>
+									<p>
+										命令git push origin --tags可以推送全部未推送过的本地标签；
+									</p>
+									<p>
+										命令git tag -d tag-name可以删除一个本地标签；
+									</p>
+									<p>
+										命令git push origin :refs/tags/tag-name可以删除一个远程标签。
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="git_left">
+					<div class="nav_list">
+						<ul>
+							<li>
+								<a href="howgit_cp1.html">Git简介</a>
+							</li>
+							<li>
+								<a href="howgit_cp2.html">Git的安装</a>
+							</li>
+							<li>
+								<a href="howgit_cp3.html">创建版本库</a>
+							</li>
+							<li>
+								<a href="howgit_cp4.html">添加文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp5.html">修改文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp6.html">版本回退</a>
+							</li>
+							<li>
+								<a href="howgit_cp7.html">工作区和暂存区</a>
+							</li>
+							<li>
+								<a href="howgit_cp8.html">管理修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp9.html">撤销修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp10.html">删除文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp11.html">远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp12.html">添加远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp13.html">分支管理</a>
+							</li>
+							<li>
+								<a href="howgit_cp14.html">创建与合并分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp15.html">解决冲突</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">分支管理策略</a>
+							</li>
+							<li>
+								<a href="howgit_cp17.html">Bug分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp18.html">Feature分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp19.html">多人协作</a>
+							</li>
+							<li class="on">
+								<a href="howgit_cp20.html">标签管理</a>
+							</li>
+							<li>
+								<a href="howgit_cp21.html">使用GitHub</a>
+							</li>
+							<li>
+								<a href="howgit_cp22.html">忽略特殊文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp23.html">配置别名</a>
+							</li>
+							<li>
+								<a href="howgit_cp24.html">总结</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--[if IE 6]><html lang="en" class="ielt7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 7]><html lang="en" class="ie7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8 ielt9 ielt10 en"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9 ielt10 en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>创建与合并分支</title>
+<link rel="stylesheet" href="../css/index.css" />
+<link rel="stylesheet" href="../css/howgit.css" />
+<link rel="stylesheet" href="../css/global.css" />
+<script>
+	
+</script>
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<div class="index-nav">
+				<ul class="clear">
+					<li>
+						<a href="javascript:;" target="_blank">首页</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">JS分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">css分享</a>
+					</li>
+					<li class="on">
+						<a href="howgit_cp1.html">Git分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">重构那点事</a>
+					</li>
+				</ul>
+			</div>
+			<div class="git_main clear">
+				<div class="git_right">
+					<div class="content_right">
+						<h1>创建与合并分支</h1>
+						<div class="text retract">
+							<div class="separate">
+								<p>
+									在版本回退里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。
+								</p>
+								<p>
+									一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点：
+								</p>
+								<div class="example">
+									<img src="../img/png/gitpics/git37.png" alt="" />
+									<p class="no_retract gycol">
+										每次提交，master分支都会向前移动一步，这样，随着你不断提交，master分支的线也越来越长
+									</p>
+									<p class="no_retract gycol">
+										当我们创建新的分支，例如dev时，Git新建了一个指针叫dev，指向master相同的提交，再把HEAD指向dev，就表示当前分支在dev上：
+									</p>
+									<img src="../img/png/gitpics/git38.png" alt="" />
+									<p class="no_retract gycol">
+										你看，Git创建一个分支很快，因为除了增加一个dev指针，改改HEAD的指向，工作区的文件都没有任何变化！
+									</p>
+									<p class="no_retract gycol">
+										不过，从现在开始，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变：
+									</p>
+									<img src="../img/png/gitpics/git39.png" alt="" />
+									<p class="no_retract gycol">
+										假如我们在dev上的工作完成了，就可以把dev合并到master上。Git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并：
+									</p>
+									<img src="../img/png/gitpics/git40.png" alt="" />
+									<p class="no_retract gycol">
+										所以Git合并分支也很快！就改改指针，工作区内容也不变！
+									</p>
+									<p class="no_retract gycol">
+										合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支：
+									</p>
+									<img src="../img/png/gitpics/git41.png" alt="" />
+									<p class="no_retract gycol">
+										下面开始实战。首先，我们创建dev分支，然后切换到dev分支：
+									</p>
+									<p>
+										$ git checkout -b dev <span class="expl">-- 创建dev分支，并切换到dev分支</span>
+									</p>
+									<p class="no_retract gycol">
+										上面的命令相当于下面的两条命令
+									</p>
+									<p>
+										$ git branch dev <span class="expl">--创建dev分支，并切换到dev分支</span>
+									</p>
+									<p>
+										$ git checkout dev <span class="expl">--切换到dev分支</span>
+									</p>
+									<p class="no_retract gycol">
+										我们来看下结果：
+									</p>
+									<p>
+										$ git branch <span class="expl">-- git branch命令会列出所有分支，当前分支前面会标一个*号。</span>
+									</p>
+									<img src="../img/png/gitpics/git42.png" alt="" />
+									<p class="no_retract gycol">
+										切换到dev分支后，我们在这个分支上进行操作，比如创建一个br.txt的文件，并提交
+									</p>
+									<p class="no_retract gycol">
+										现在dev分支上的任务完成了，切换回master分支
+									</p>
+									<p>
+										$ git checkout master
+									</p>
+									<p class="no_retract gycol">
+										切换回master分支后，再查看这个br.txt文件，发现找不到了，因为那个提交是在dev分支上，而master分支此刻的提交点并没有变：
+									</p>
+									<img src="../img/png/gitpics/git43.png" alt="" />
+									<p class="no_retract gycol">
+										现在，我们把dev分支的工作成果合并到master分支上：
+									</p>
+									<p>
+										$ git merge dev <span class="expl">--用于合并指定分支到当前分支</span>
+									</p>
+									<p class="no_retract gycol">
+										这时，我们再查看br.txt，就可以看到，和dev分支的最新提交是完全一样的。 
+									</p>
+									<img src="../img/png/gitpics/git44.png" alt="" />
+									<p class="no_retract gycol">
+										注意到上面的Fast-forward信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。
+									</p>
+									<p class="no_retract gycol">
+										当然，也不是每次合并都能Fast-forward，我们后面会讲其他方式的合并。
+									</p>
+									<p class="no_retract gycol">
+										合并完成后，dev 分支就可以功成身退了（放心的删除dev分支）：
+									</p>
+									<p>
+										$ git branch -d dev <span class="expl">--删除指定分支</span>
+									</p>
+									<p class="no_retract gycol">
+										删除后，查看branch，就只剩下master分支了：
+									</p>
+									<p>
+										$ git branch
+									</p>
+									<img src="../img/png/gitpics/git45.png" alt="" />
+									<p class="no_retract gycol">
+										因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。
+									</p>
+								</div>
+								<div class="sum">
+									<h3>小结：</h3>
+									<p>
+										Git鼓励大量使用分支：
+									</p>
+									<p>
+										查看分支：git branch
+									</p>
+									<p>
+										创建分支：git branch <span class="lineihigh">BranchName</span>
+									</p>
+									<p>
+										切换分支：git checkout <span class="lineihigh">BranchName</span>
+									</p>
+									<p>
+										创建+切换分支：git checkout -b <span class="lineihigh">BranchName</span>
+									</p>
+									<p>
+										合并某分支到当前分支：git merge <span class="lineihigh">BranchName</span>
+									</p>
+									<p>
+										删除分支：git branch -d <span class="lineihigh">BranchName</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="git_left">
+					<div class="nav_list">
+						<ul>
+							<li>
+								<a href="howgit_cp1.html">Git简介</a>
+							</li>
+							<li>
+								<a href="howgit_cp2.html">Git的安装</a>
+							</li>
+							<li>
+								<a href="howgit_cp3.html">创建版本库</a>
+							</li>
+							<li>
+								<a href="howgit_cp4.html">添加文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp5.html">修改文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp6.html">版本回退</a>
+							</li>
+							<li>
+								<a href="howgit_cp7.html">工作区和暂存区</a>
+							</li>
+							<li>
+								<a href="howgit_cp8.html">管理修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp9.html">撤销修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp10.html">删除文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp11.html">远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp12.html">添加远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp13.html">分支管理</a>
+							</li>
+							<li class="on">
+								<a href="howgit_cp14.html">创建与合并分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp15.html">解决冲突</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">分支管理策略</a>
+							</li>
+							<li>
+								<a href="howgit_cp17.html">Bug分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp18.html">Feature分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp19.html">多人协作</a>
+							</li>
+							<li>
+								<a href="howgit_cp20.html">标签管理</a>
+							</li>
+							<li>
+								<a href="howgit_cp21.html">使用GitHub</a>
+							</li>
+							<li>
+								<a href="howgit_cp22.html">忽略特殊文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp23.html">配置别名</a>
+							</li>
+							<li>
+								<a href="howgit_cp24.html">总结</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -7,7 +7,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加文件</title>
+<title>Feature分支</title>
 <link rel="stylesheet" href="../css/index.css" />
 <link rel="stylesheet" href="../css/howgit.css" />
 <link rel="stylesheet" href="../css/global.css" />
@@ -40,56 +40,58 @@
 			<div class="git_main clear">
 				<div class="git_right">
 					<div class="content_right">
-						<h1>添加文件</h1>
+						<h1>Feature分支</h1>
 						<div class="text retract">
-							<div class="example">
-								<h2>第一步：</h2>
+							<div class="separate">
 								<p>
-									$ touch to8to.txt
-									<span class="expl">--创建一个名为 to8to.txt 的txt文件。当然，也可以直接在工作区右键建立这个文件</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>第二步：</h2>
-								<p>
-									$ git add to8to.txt
-									<span class="expl">-- 添加这个文件到仓库。修改完已存在的文件，也用这个命令</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>第三步：</h2>
-								<p>
-									$ git commit -m “add a file”
-									<span class="expl">--"-m" 后面输入的是本次提交的说明，视情况编写</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>如果你在提交之前添加或者修改了多个文件，可以在最后commit，如下：</h2>
-								<p>
-									$ git add to8to1.txt
+									软件开发中，总有无穷无尽的新的功能要不断添加进来。
 								</p>
 								<p>
-									$ git add to8to2.txt
+									添加一个新功能时，你肯定不希望因为一些实验性质的代码，把主分支搞乱了，所以，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支。
 								</p>
 								<p>
-									$ git add to8to3.txt
+									现在，你终于接到了一个新任务：开发代号为Vulcan的新功能，该功能计划用于下一代星际飞船。
 								</p>
 								<p>
-									$ git commit -m “add three file”
+									于是准备开发：
 								</p>
-								<img src="../img/png/gitpics/git2.png" alt="" />
-							</div>
-							<div class="sum">
-								<h3>小结：</h3>
-								<p>
-									1，touch xxx  创建文件
-								</p>
-								<p>
-									2，git add xxx 添加文件（新建的文件或者是修改的文件）
-								</p>
-								<p>
-									3，git commit -m “xxx” 提交文件
-								</p>
+								<div class="example">
+									<img src="../img/png/gitpics/git60.png" alt="" />
+									<p class="no_retract gycol">
+										开发完成，切回master，准备合并：
+									</p>
+									<p>
+										$ git checkout master
+									</p>
+									<p class="no_retract gycol">
+										一切顺利的话，feature分支和bug分支是类似的，合并，然后删除。
+									</p>
+									<p class="no_retract gycol">
+										但是，就在此时，接到上级命令，因经费不足，新功能必须取消！虽然白干了，但是这个分支还是必须就地销毁：
+									</p>
+									<p>
+										$ git branch –d feature-vulcan
+									</p>
+									<p class="no_retract gycol">
+										销毁失败。Git友情提醒，feature-vulcan分支还没有被合并，如果删除，将丢失掉修改，如果要强行删除，需要使用命令git branch -D feature-vulcan。
+									</p>
+									<p class="no_retract gycol">
+										现在我们强行删除：
+									</p>
+									<p>
+										$ git branch –D feature-vulcan
+									</p>
+									<img src="../img/png/gitpics/git61.png" alt="" />
+								</div>
+								<div class="sum">
+									<h3>小结：</h3>
+									<p>
+										开发一个新feature，最好新建一个分支；
+									</p>
+									<p>
+										如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -106,7 +108,7 @@
 							<li>
 								<a href="howgit_cp3.html">创建版本库</a>
 							</li>
-							<li class="on">
+							<li>
 								<a href="howgit_cp4.html">添加文件</a>
 							</li>
 							<li>
@@ -148,7 +150,7 @@
 							<li>
 								<a href="howgit_cp17.html">Bug分支</a>
 							</li>
-							<li>
+							<li class="on">
 								<a href="howgit_cp18.html">Feature分支</a>
 							</li>
 							<li>

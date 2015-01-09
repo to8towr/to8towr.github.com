@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--[if IE 6]><html lang="en" class="ielt7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 7]><html lang="en" class="ie7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8 ielt9 ielt10 en"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9 ielt10 en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>撤销修改</title>
+<link rel="stylesheet" href="../css/index.css" />
+<link rel="stylesheet" href="../css/howgit.css" />
+<link rel="stylesheet" href="../css/global.css" />
+<script>
+	
+</script>
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<div class="index-nav">
+				<ul class="clear">
+					<li>
+						<a href="javascript:;" target="_blank">首页</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">JS分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">css分享</a>
+					</li>
+					<li class="on">
+						<a href="howgit_cp1.html">Git分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">重构那点事</a>
+					</li>
+				</ul>
+			</div>
+			<div class="git_main clear">
+				<div class="git_right">
+					<div class="content_right">
+						<h1>撤销修改</h1>
+						<div class="text retract">
+							<div class="separate">
+								<p>
+									你现在正在赶一份报告，你在to8to.txt里面添加了一行：
+								</p>
+								<div class="example">
+									<p>
+										Git is a distributed version control system.
+									</p>
+									<p>
+										Git is free software distributed under the GPL.
+									</p>
+									<p>
+										Git tracks changes of files.
+									</p>
+									<p>
+										Git is better than SVN.
+									</p>
+									<p class="no_retract gycol">
+										在你准备git add之前，感觉不妥。用git status 查看一下：
+									</p>
+									<img src="../img/png/gitpics/git23.png" alt="" />
+									<p class="no_retract gycol">
+										这时，Git会告诉你，git checkout -- file 可以丢弃工作区的修改，运行 $ git checkout -- to8to.txt 。
+									</p>
+									<p class="no_retract gycol">
+										（当然，这种小修改也可以直接删掉最后一行，手动把版本恢复到上一个版本的状态。）
+									</p>
+									<p class="no_retract gycol">
+										运行了 $ git checkout -- to8to.txt 之后，再来看看to8to.txt的内容：
+									</p>
+									<img src="../img/png/gitpics/git24.png" alt="" />
+									<p class="no_retract gycol">
+										文件果然复原了。
+									</p>
+									<p class="no_retract gycol">
+										命令 $ git checkout -- to8to.txt意思就是，把to8to.txt文件在工作区的修改全部撤销，这里有两种情况：
+									</p>
+									<p>
+										一种是to8to.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+									</p>
+									<p>
+										一种是to8to.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+									</p>
+									<p class="no_retract gycol">
+										命令中的$ git checkout -- file 中的 -- 很重要，没有 --，就变成了“创建一个新分支”的命令，我们在后面的分支管理中会再次遇到 git checkout 命令
+									</p>
+									<p class="no_retract gycol">
+										现在你又写了一行不妥的话，内容如下：
+									</p>
+									<p>
+										Git is a distributed version control system.
+									</p>
+									<p>
+										Git is free software distributed under the GPL.
+									</p>
+									<p>
+										Git has a mutable index called stage.
+									</p>
+									<p>
+										Git tracks changes of files.
+									</p>
+									<p>
+										I don’t like Git.
+									</p>
+									<p class="no_retract gycol">
+										并且git add ,放到了暂存区，然后 git status 查看一下：
+									</p>
+									<img src="../img/png/gitpics/git25.png" alt="" />
+									<p class="no_retract gycol">
+										Git告诉我们，用命令 $ git reset HEAD file 可以把暂存区的修改撤销掉（unstage），重新放回工作区
+									</p>
+									<p class="no_retract gycol">
+										我们运行$ git reset HEAD to8to.txt：
+									</p>
+									<img src="../img/png/gitpics/git27.png" alt="" />
+									<p class="no_retract gycol">
+										Git告诉我们，暂存区是干净的，但是工作区有修改。
+									</p>
+									<p class="no_retract gycol">
+										还记得如何丢弃工作区的修改吗？
+									</p>
+									<p>
+										$ git checkout -- to8to.txt
+									</p>
+									<p>
+										$ git status
+									</p>
+									<p class="no_retract gycol">
+										世界终于干净了。
+									</p>
+									<p class="no_retract gycol">
+										现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得版本回退一节吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程。还记得Git是分布式版本控制系统吗？我们后面会讲到远程版本库
+									</p>
+								</div>
+								<div class="sum">
+									<h3>小结：</h3>
+									<p>
+										场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令 $ git checkout -- file
+									</p>
+									<p>
+										场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令 $ git reset HEAD file，就回到了场景1，第二步按场景1操作。
+									</p>
+									<p>
+										场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="git_left">
+					<div class="nav_list">
+						<ul>
+							<li>
+								<a href="howgit_cp1.html">Git简介</a>
+							</li>
+							<li>
+								<a href="howgit_cp2.html">Git的安装</a>
+							</li>
+							<li>
+								<a href="howgit_cp3.html">创建版本库</a>
+							</li>
+							<li>
+								<a href="howgit_cp4.html">添加文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp5.html">修改文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp6.html">版本回退</a>
+							</li>
+							<li>
+								<a href="howgit_cp7.html">工作区和暂存区</a>
+							</li>
+							<li>
+								<a href="howgit_cp8.html">管理修改</a>
+							</li>
+							<li class="on">
+								<a href="howgit_cp9.html">撤销修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp10.html">删除文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp11.html">远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp12.html">添加远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp13.html">分支管理</a>
+							</li>
+							<li>
+								<a href="howgit_cp14.html">创建与合并分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp15.html">解决冲突</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">分支管理策略</a>
+							</li>
+							<li>
+								<a href="howgit_cp17.html">Bug分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp18.html">Feature分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp19.html">多人协作</a>
+							</li>
+							<li>
+								<a href="howgit_cp20.html">标签管理</a>
+							</li>
+							<li>
+								<a href="howgit_cp21.html">使用GitHub</a>
+							</li>
+							<li>
+								<a href="howgit_cp22.html">忽略特殊文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp23.html">配置别名</a>
+							</li>
+							<li>
+								<a href="howgit_cp24.html">总结</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

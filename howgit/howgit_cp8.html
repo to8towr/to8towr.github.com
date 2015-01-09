@@ -7,7 +7,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加文件</title>
+<title>管理修改</title>
 <link rel="stylesheet" href="../css/index.css" />
 <link rel="stylesheet" href="../css/howgit.css" />
 <link rel="stylesheet" href="../css/global.css" />
@@ -40,56 +40,70 @@
 			<div class="git_main clear">
 				<div class="git_right">
 					<div class="content_right">
-						<h1>添加文件</h1>
+						<h1>管理修改</h1>
 						<div class="text retract">
-							<div class="example">
-								<h2>第一步：</h2>
+							<div class="separate">
 								<p>
-									$ touch to8to.txt
-									<span class="expl">--创建一个名为 to8to.txt 的txt文件。当然，也可以直接在工作区右键建立这个文件</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>第二步：</h2>
-								<p>
-									$ git add to8to.txt
-									<span class="expl">-- 添加这个文件到仓库。修改完已存在的文件，也用这个命令</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>第三步：</h2>
-								<p>
-									$ git commit -m “add a file”
-									<span class="expl">--"-m" 后面输入的是本次提交的说明，视情况编写</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>如果你在提交之前添加或者修改了多个文件，可以在最后commit，如下：</h2>
-								<p>
-									$ git add to8to1.txt
+									下面，我们要讨论的就是，为什么Git比其他版本控制系统设计得优秀，因为Git跟踪并管理的是修改，而非文件。前提是你已经掌握了暂存区的概念。
 								</p>
 								<p>
-									$ git add to8to2.txt
+									什么是修改？比如你新增了一行，这就是一个修改，删除了一行，也是一个修改，更改了某些字符，也是一个修改，删了一些又加了一些，也是一个修改，甚至创建一个新文件，也算一个修改。
 								</p>
 								<p>
-									$ git add to8to3.txt
+									为什么说Git管理的是修改，而不是文件呢？我们还是做实验。第一步，对to8to.txt做一个修改，比如加一行内容，如下：
 								</p>
-								<p>
-									$ git commit -m “add three file”
-								</p>
-								<img src="../img/png/gitpics/git2.png" alt="" />
-							</div>
-							<div class="sum">
-								<h3>小结：</h3>
-								<p>
-									1，touch xxx  创建文件
-								</p>
-								<p>
-									2，git add xxx 添加文件（新建的文件或者是修改的文件）
-								</p>
-								<p>
-									3，git commit -m “xxx” 提交文件
-								</p>
+								<div class="example">
+									<p>
+										Git is a distributed version control system.
+									</p>
+									<p>
+										Git is free software distributed under the GPL.
+									</p>
+									<p>
+										Git has a mutable index called stage.
+									</p>
+									<p>
+										Git tracks changes.
+									</p>
+									<p class="no_retract gycol">
+										这次的修改我们不添加了，然后直接提交 $ git commit –m “change stage”，然后 $ git status 查看
+									</p>
+									<img src="../img/png/gitpics/git21.png" alt="" />
+									<p class="no_retract gycol">
+										第二次的修改没有被提交，别急，我们往上缕一缕：
+									</p>
+									<p class="no_retract gycol">
+										第一次修改 → git add → 第二次修改 → git commit
+									</p>
+									<p class="no_retract gycol">
+										你看，我们前面讲了，Git管理的是修改，当你用git add命令后，在工作区的第一次修改被放入暂存区，准备提交，但是，在工作区的第二次修改并没有放入暂存区，所以，git commit只负责把暂存区的修改提交了，也就是第一次的修改被提交了，第二次的修改不会被提交。
+									</p>
+									<p class="no_retract gycol">
+										提交后，我们用 $ git diff HEAD -- to8to.txt 命令可以查看工作区和版本库里面最新版本的区别：
+									</p>
+									<img src="../img/png/gitpics/git22.png" alt="" />
+									<p class="no_retract gycol">
+										可见，第二次修改确实没有被提交
+									</p>
+									<p class="no_retract gycol">
+										那怎么提交第二次修改呢？你可以git add继续再git commit，也可以别着急提交第一次修改，先git add第二次修改，再git commit，就相当于把两次修改合并后一块提交了：
+									</p>
+									<p class="no_retract gycol">
+										第一次修改 -> git add -> 第二次修改 -> git add -> git commit
+									</p>
+									<p class="no_retract gycol">
+										好，现在，把第二次修改提交,自己操作。
+									</p>
+								</div>
+								<div class="sum">
+									<h3>小结：</h3>
+									<p>
+										$ git diff HEAD -- to8to.txt 命令可以查看工作区和版本库里面最新版本的区别
+									</p>
+									<p>
+										现在，你又理解了Git是如何跟踪修改的，每次修改，如果不add到暂存区，那就不会加入到commit中。
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -106,7 +120,7 @@
 							<li>
 								<a href="howgit_cp3.html">创建版本库</a>
 							</li>
-							<li class="on">
+							<li>
 								<a href="howgit_cp4.html">添加文件</a>
 							</li>
 							<li>
@@ -118,7 +132,7 @@
 							<li>
 								<a href="howgit_cp7.html">工作区和暂存区</a>
 							</li>
-							<li>
+							<li class="on">
 								<a href="howgit_cp8.html">管理修改</a>
 							</li>
 							<li>

@@ -7,7 +7,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加文件</title>
+<title>Git总结</title>
 <link rel="stylesheet" href="../css/index.css" />
 <link rel="stylesheet" href="../css/howgit.css" />
 <link rel="stylesheet" href="../css/global.css" />
@@ -40,56 +40,24 @@
 			<div class="git_main clear">
 				<div class="git_right">
 					<div class="content_right">
-						<h1>添加文件</h1>
+						<h1>Git总结</h1>
 						<div class="text retract">
-							<div class="example">
-								<h2>第一步：</h2>
+							<div class="separate">
 								<p>
-									$ touch to8to.txt
-									<span class="expl">--创建一个名为 to8to.txt 的txt文件。当然，也可以直接在工作区右键建立这个文件</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>第二步：</h2>
-								<p>
-									$ git add to8to.txt
-									<span class="expl">-- 添加这个文件到仓库。修改完已存在的文件，也用这个命令</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>第三步：</h2>
-								<p>
-									$ git commit -m “add a file”
-									<span class="expl">--"-m" 后面输入的是本次提交的说明，视情况编写</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>如果你在提交之前添加或者修改了多个文件，可以在最后commit，如下：</h2>
-								<p>
-									$ git add to8to1.txt
+									git由于是用命令操作的，刚开始用的同学可能感觉上手有点困难。熟话说熟能生巧，多用几次，就会越用越顺手。
 								</p>
 								<p>
-									$ git add to8to2.txt
+									Git虽然极其强大，命令繁多，但常用的就那么十来个，掌握好这十几个常用命令，你已经可以得心应手地使用Git了。
 								</p>
-								<p>
-									$ git add to8to3.txt
-								</p>
-								<p>
-									$ git commit -m “add three file”
-								</p>
-								<img src="../img/png/gitpics/git2.png" alt="" />
-							</div>
-							<div class="sum">
-								<h3>小结：</h3>
-								<p>
-									1，touch xxx  创建文件
-								</p>
-								<p>
-									2，git add xxx 添加文件（新建的文件或者是修改的文件）
-								</p>
-								<p>
-									3，git commit -m “xxx” 提交文件
-								</p>
+								<div class="example">
+									<h2>
+										下面是一个简单的原理图：
+									</h2>
+									<img src="../img/png/gitpics/git73.png" alt="" />
+									<p class="no_retract gycol">
+										到目前为止，我们可以用Git完成一些常用的操作了。但Git还有很多实用的技巧和命令,如果觉得Git好，我们可以去对Git的知识进行拓展，进一步提升工作效率。
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -106,7 +74,7 @@
 							<li>
 								<a href="howgit_cp3.html">创建版本库</a>
 							</li>
-							<li class="on">
+							<li>
 								<a href="howgit_cp4.html">添加文件</a>
 							</li>
 							<li>
@@ -166,8 +134,8 @@
 							<li>
 								<a href="howgit_cp23.html">配置别名</a>
 							</li>
-							<li>
-								<a href="howgit_cp24.html">总结</a>
+							<li class="on">
+								<a href="howgit_cp24.html">Git总结</a>
 							</li>
 						</ul>
 					</div>

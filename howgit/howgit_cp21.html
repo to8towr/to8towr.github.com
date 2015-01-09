@@ -7,7 +7,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加文件</title>
+<title>使用GitHub</title>
 <link rel="stylesheet" href="../css/index.css" />
 <link rel="stylesheet" href="../css/howgit.css" />
 <link rel="stylesheet" href="../css/global.css" />
@@ -40,56 +40,53 @@
 			<div class="git_main clear">
 				<div class="git_right">
 					<div class="content_right">
-						<h1>添加文件</h1>
+						<h1>使用GitHub</h1>
 						<div class="text retract">
-							<div class="example">
-								<h2>第一步：</h2>
-								<p>
-									$ touch to8to.txt
-									<span class="expl">--创建一个名为 to8to.txt 的txt文件。当然，也可以直接在工作区右键建立这个文件</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>第二步：</h2>
-								<p>
-									$ git add to8to.txt
-									<span class="expl">-- 添加这个文件到仓库。修改完已存在的文件，也用这个命令</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>第三步：</h2>
-								<p>
-									$ git commit -m “add a file”
-									<span class="expl">--"-m" 后面输入的是本次提交的说明，视情况编写</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>如果你在提交之前添加或者修改了多个文件，可以在最后commit，如下：</h2>
-								<p>
-									$ git add to8to1.txt
+							<div class="separate">
+								<p>我们一直用GitHub作为免费的远程仓库，如果是个人的开源项目，放到GitHub上是完全没有问题的。其实GitHub还是一个开源协作社区，通过GitHub，既可以让别人参与你的开源项目，也可以参与别人的开源项目。
 								</p>
 								<p>
-									$ git add to8to2.txt
+									在GitHub出现以前，开源项目开源容易，但让广大人民群众参与进来比较困难，因为要参与，就要提交代码，而给每个想提交代码的群众都开一个账号那是不现实的，因此，群众也仅限于报个bug，即使能改掉bug，也只能把diff文件用邮件发过去，很不方便。
 								</p>
 								<p>
-									$ git add to8to3.txt
+									但是在GitHub上，利用Git极其强大的克隆和分支功能，人们群众真正可以第一次自由参与各种开源项目了。
 								</p>
 								<p>
-									$ git commit -m “add three file”
+									如何参与一个开源项目呢？比如人气极高的bootstrap项目，这是一个非常强大的CSS框架，你可以访问它的项目主页<a href="https://github.com/twbs/bootstrap" target="_blank">https://github.com/twbs/bootstrap</a>，点“Fork”就在自己的账号下克隆了一个bootstrap仓库，然后，从自己的账号下clone：
 								</p>
-								<img src="../img/png/gitpics/git2.png" alt="" />
-							</div>
-							<div class="sum">
-								<h3>小结：</h3>
-								<p>
-									1，touch xxx  创建文件
-								</p>
-								<p>
-									2，git add xxx 添加文件（新建的文件或者是修改的文件）
-								</p>
-								<p>
-									3，git commit -m “xxx” 提交文件
-								</p>
+								<div class="example">
+									<p>
+										git clone git@github.com:michaelliao/bootstrap.git
+									</p>
+									<p class="no_retract gycol">
+										一定要从自己的账号下clone仓库，这样你才能推送修改。如果从bootstrap的作者的仓库地址<span class="lineihigh">git@github.com:twbs/bootstrap.git</span>克隆，因为没有权限，你将不能推送修改。
+									</p>
+									<p class="no_retract gycol">
+										Bootstrap的官方仓库<span class="lineihigh">twbs/bootstrap</span>、你在GitHub上克隆的仓库<span class="lineihigh">my/bootstrap</span>，以及你自己克隆到本地电脑的仓库，他们的关系就像下图显示的那样：
+									</p>
+									<img src="../img/png/gitpics/git68.png" alt="" />
+									<p class="no_retract gycol">
+										如果你想修复bootstrap的一个bug，或者新增一个功能，立刻就可以开始干活，干完后，往自己的仓库推送。
+									</p>
+									<p class="no_retract gycol">
+										如果你希望bootstrap的官方库能接受你的修改，你就可以在GitHub上发起一个pull request。当然，对方是否接受你的pull request就不一定了。
+									</p>
+									<p class="no_retract gycol">
+										如果你没能力修改bootstrap，但又想要试一把pull request，那就Fork一下我的仓库：<span class="lineihigh">git@github.com:to8towr/to8towr.github.com.git</span>，创建一个your-github-id.txt的文本文件，写点意见和建议，然后推送一个pull request给我。
+									</p>
+								</div>
+								<div class="sum">
+									<h3>小结：</h3>
+									<p>
+										在GitHub上，可以任意Fork开源仓库；
+									</p>
+									<p>
+										自己拥有Fork后的仓库的读写权限；
+									</p>
+									<p>
+										可以推送pull request给官方仓库来贡献代码。
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -106,7 +103,7 @@
 							<li>
 								<a href="howgit_cp3.html">创建版本库</a>
 							</li>
-							<li class="on">
+							<li>
 								<a href="howgit_cp4.html">添加文件</a>
 							</li>
 							<li>
@@ -157,7 +154,7 @@
 							<li>
 								<a href="howgit_cp20.html">标签管理</a>
 							</li>
-							<li>
+							<li class="on">
 								<a href="howgit_cp21.html">使用GitHub</a>
 							</li>
 							<li>

@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--[if IE 6]><html lang="en" class="ielt7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 7]><html lang="en" class="ie7  ielt8  ielt9 ielt10 en"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8 ielt9 ielt10 en"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9 ielt10 en"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>添加远程仓库</title>
+<link rel="stylesheet" href="../css/index.css" />
+<link rel="stylesheet" href="../css/howgit.css" />
+<link rel="stylesheet" href="../css/global.css" />
+<script>
+	
+</script>
+</head>
+<body>
+	<div class="content">
+		<div class="main">
+			<div class="index-nav">
+				<ul class="clear">
+					<li>
+						<a href="javascript:;" target="_blank">首页</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">JS分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">css分享</a>
+					</li>
+					<li class="on">
+						<a href="howgit_cp1.html">Git分享</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">重构那点事</a>
+					</li>
+				</ul>
+			</div>
+			<div class="git_main clear">
+				<div class="git_right">
+					<div class="content_right">
+						<h1>添加远程仓库</h1>
+						<div class="text retract">
+							<div class="separate">
+								<p>
+									我们在github上建一个名为to8to的仓库，如图：
+								</p>
+								<div class="example">
+									<img src="../img/png/gitpics/git33.png" alt="" />
+									<p class="no_retract gycol">
+										Github上的仓库创建成功了，但这只是个空的仓库，我们可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。
+									</p>
+									<p class="no_retract gycol">
+										现在，我们运行命令，让本地仓库与远程仓库相关联
+									</p>
+									<p>
+										$ git remote add origin git@github.com:<span class="lineihigh">to8towr</span>/to8to.git
+									</p>
+									<p class="no_retract gycol">
+										添加后，远程库的名字就是origin，也可以改成别的，但是origin这个名字一看就知道是远程库。
+									</p>
+									<p class="no_retract lineihigh gycol">
+										红色字体为你自己的用户名，每个人不同，输入命令的时候替换一下，不然就关联到我的仓库了。关联没有问题，但是你的SSH key 公钥不在我的账户内，你就没有权限推送内容上去。
+									</p>
+									<p class="no_retract gycol">
+										这个链接是可以在你的github网站上复制的
+									</p>
+									<img src="../img/png/gitpics/git34.png" alt="" />
+									<p class="no_retract gycol">
+										然后我们再把github上的仓库克隆到本地
+									</p>
+									<p>
+										$ git clone git@github.com:to8towr/to8to.git
+									</p>
+									<p class="no_retract gycol">
+										这时候，我们本地就多了一个to8to的文件夹，进入到这个文件夹下
+									</p>
+									<p>
+										$ cd to8to
+									</p>
+									<p class="no_retract gycol">
+										我们添加一个test.txt文件并且提交，然后推送到github
+									</p>
+									<p>
+										$ git push -u origin master
+									</p>
+									<img src="../img/png/gitpics/git35.png" alt="" />
+									<p class="no_retract gycol">
+										推送成功，我们可以看看github上的这个仓库是不是多了一个test.txt的文件。
+									</p>
+									<p class="no_retract gycol">
+										把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。
+									</p>
+									<p class="no_retract gycol">
+										由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
+									</p>
+									<p class="no_retract gycol">
+										从现在起，只要本地做了提交，就可以通过命令：
+									</p>
+									<p>
+										$ git push origin master <span class="expl">推送到远程</span>
+									</p>
+									<h2>SSH警告</h2>
+									<p class="gycol">
+										当你第一次使用Git的clone或者push命令连接GitHub时，会得到一个警告：
+									</p>
+									<p>
+										The authenticity of host 'github.com (xx.xx.xx.xx)' can't be established.
+									</p>
+									<p>
+										SA key fingerprint is xx.xx.xx.xx.xx.
+									</p>
+									<p>
+										are you sure you want to continue connecting (yes/no)?
+									</p>
+									<p class="gycol">
+										这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入yes回车即可。
+									</p>
+									<p class="gycol">
+										Git会输出一个警告，告诉你已经把GitHub的Key添加到本机的一个信任列表里了：
+									</p>
+									<p>
+										Warning: Permanently added 'github.com' (RSA) to the list of known hosts.
+									</p>
+									<p class="gycol">
+										这个警告只会出现一次，后面的操作就不会有任何警告了。
+									</p>
+								</div>
+								<div class="sum">
+									<h3>小结：</h3>
+									<p>
+										要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
+									</p>
+									<p>
+										关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+									</p>
+									<p>
+										此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+									</p>
+									<p>
+										分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，而SVN在没有联网的时候是拒绝干活的！当有网络的时候，再把本地提交推送一下就完成了同步，真是太方便了！
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="git_left">
+					<div class="nav_list">
+						<ul>
+							<li>
+								<a href="howgit_cp1.html">Git简介</a>
+							</li>
+							<li>
+								<a href="howgit_cp2.html">Git的安装</a>
+							</li>
+							<li>
+								<a href="howgit_cp3.html">创建版本库</a>
+							</li>
+							<li>
+								<a href="howgit_cp4.html">添加文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp5.html">修改文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp6.html">版本回退</a>
+							</li>
+							<li>
+								<a href="howgit_cp7.html">工作区和暂存区</a>
+							</li>
+							<li>
+								<a href="howgit_cp8.html">管理修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp9.html">撤销修改</a>
+							</li>
+							<li>
+								<a href="howgit_cp10.html">删除文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp11.html">远程仓库</a>
+							</li>
+							<li class="on">
+								<a href="howgit_cp12.html">添加远程仓库</a>
+							</li>
+							<li>
+								<a href="howgit_cp13.html">分支管理</a>
+							</li>
+							<li>
+								<a href="howgit_cp14.html">创建与合并分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp15.html">解决冲突</a>
+							</li>
+							<li>
+								<a href="howgit_cp16.html">分支管理策略</a>
+							</li>
+							<li>
+								<a href="howgit_cp17.html">Bug分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp18.html">Feature分支</a>
+							</li>
+							<li>
+								<a href="howgit_cp19.html">多人协作</a>
+							</li>
+							<li>
+								<a href="howgit_cp20.html">标签管理</a>
+							</li>
+							<li>
+								<a href="howgit_cp21.html">使用GitHub</a>
+							</li>
+							<li>
+								<a href="howgit_cp22.html">忽略特殊文件</a>
+							</li>
+							<li>
+								<a href="howgit_cp23.html">配置别名</a>
+							</li>
+							<li>
+								<a href="howgit_cp24.html">总结</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

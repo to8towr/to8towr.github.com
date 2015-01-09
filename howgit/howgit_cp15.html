@@ -7,7 +7,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=" en"><!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加文件</title>
+<title>解决冲突</title>
 <link rel="stylesheet" href="../css/index.css" />
 <link rel="stylesheet" href="../css/howgit.css" />
 <link rel="stylesheet" href="../css/global.css" />
@@ -40,56 +40,83 @@
 			<div class="git_main clear">
 				<div class="git_right">
 					<div class="content_right">
-						<h1>添加文件</h1>
+						<h1>解决冲突</h1>
 						<div class="text retract">
-							<div class="example">
-								<h2>第一步：</h2>
+							<div class="separate">
 								<p>
-									$ touch to8to.txt
-									<span class="expl">--创建一个名为 to8to.txt 的txt文件。当然，也可以直接在工作区右键建立这个文件</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>第二步：</h2>
-								<p>
-									$ git add to8to.txt
-									<span class="expl">-- 添加这个文件到仓库。修改完已存在的文件，也用这个命令</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>第三步：</h2>
-								<p>
-									$ git commit -m “add a file”
-									<span class="expl">--"-m" 后面输入的是本次提交的说明，视情况编写</span>
-								</p>
-							</div>
-							<div class="example">
-								<h2>如果你在提交之前添加或者修改了多个文件，可以在最后commit，如下：</h2>
-								<p>
-									$ git add to8to1.txt
+									人生不如意之事十之八九，合并分支往往也不是一帆风顺的。
 								</p>
 								<p>
-									$ git add to8to2.txt
+									准备新的feature1分支，继续我们的新分支开发：
 								</p>
-								<p>
-									$ git add to8to3.txt
-								</p>
-								<p>
-									$ git commit -m “add three file”
-								</p>
-								<img src="../img/png/gitpics/git2.png" alt="" />
-							</div>
-							<div class="sum">
-								<h3>小结：</h3>
-								<p>
-									1，touch xxx  创建文件
-								</p>
-								<p>
-									2，git add xxx 添加文件（新建的文件或者是修改的文件）
-								</p>
-								<p>
-									3，git commit -m “xxx” 提交文件
-								</p>
+								<div class="example">
+									<p>
+										$ git checkout -b feature1 <span class="expl">--创建并切换到feature1分支</span>
+									</p>
+									<p class="no_retract gycol">
+										在br.txt里添加一段话 <span class="lineihigh">Creating a new branch is quick AND simple</span>，并在分支上提交。
+									</p>
+									<p class="no_retract gycol">
+										切换到master分支
+									</p>
+									<p class="no_retract gycol">
+										Git还会自动提示我们当前master分支比远程的master分支要超前1个提交。
+									</p>
+									<p class="no_retract gycol">
+										在master分支上把br.txt文件的内容改为：<span class="lineihigh">Creating a new branch is quick & simple.</span>
+									</p>
+									<p class="no_retract gycol">
+										现在，master分支和feature1分支各自都分别有新的提交，变成了这样：
+									</p>
+									<img src="../img/png/gitpics/git46.png" alt="" />
+									<p class="no_retract gycol">
+										这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突，我们试试看：
+									</p>
+									<img src="../img/png/gitpics/git47.png" alt="" />
+									<p class="no_retract gycol">
+										果然冲突了！Git告诉我们，br.txt文件存在冲突，必须手动解决冲突后再提交。git status也可以告诉我们冲突的文件
+									</p>
+									<p class="no_retract gycol">
+										我们可以直接查看br.txt的内容：$ cat br.txt
+									</p>
+									<img src="../img/png/gitpics/git48.png" alt="" />
+									<p class="no_retract gycol">
+										Git用<<<<<<<，=======，>>>>>>>标记出不同分支的内容，我们修改如下后保存：
+									</p>
+									<p>
+										Creating a new branch is quick and simple.
+									</p>
+									<p class="no_retract gycol">
+										然后提交：
+									</p>
+									<p>
+										$ git add br.txt
+									</p>
+									<p>
+										$ git commit –m “conflict fixed”
+									</p>
+									<img src="../img/png/gitpics/git49.png" alt="" />
+									<p class="no_retract gycol">
+										现在，master分支和feature1分支变成了下图所示：
+									</p>
+									<img src="../img/png/gitpics/git50.png" alt="" />
+									<p class="no_retract gycol">
+										用带参数的git log也可以看到分支的合并情况：
+									</p>
+									<img src="../img/png/gitpics/git51.png" alt="" />
+									<p class="no_retract gycol">
+										分支的任务完成，删除它。
+									</p>
+								</div>
+								<div class="sum">
+									<h3>小结：</h3>
+									<p>
+										当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
+									</p>
+									<p>
+										用git log --graph命令可以看到分支合并图。
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -106,7 +133,7 @@
 							<li>
 								<a href="howgit_cp3.html">创建版本库</a>
 							</li>
-							<li class="on">
+							<li>
 								<a href="howgit_cp4.html">添加文件</a>
 							</li>
 							<li>
@@ -139,7 +166,7 @@
 							<li>
 								<a href="howgit_cp14.html">创建与合并分支</a>
 							</li>
-							<li>
+							<li class="on">
 								<a href="howgit_cp15.html">解决冲突</a>
 							</li>
 							<li>
