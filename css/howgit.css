@@ -10,9 +10,10 @@
 .content_right h1{font-size: 24px;color: #333;font-weight: bold;color: #fff;margin-bottom: 10px;}
 .text h2{color: #666;font-size: 16px;color: #fff;margin-top: 8px;}
 .retract{padding-left: 30px;}
+.text .example p .lineihigh,.text .separate p .lineihigh,.sum p .lineihigh{color: #c40;}
 .text .no_retract{padding-left: 0;}
 .text p{padding-left: 20px;color: #ccc;line-height: 24px;word-break:break-all;word-wrap:break-word;}
-.text p a{color: #01a469;}
+.text p a{color: #01a469;text-decoration: underline;}
 .text .separate{margin-bottom: 20px;}
 .text .example{padding-left: 26px;}
 .text .example p{color: #fff;}
@@ -22,3 +23,4 @@
 .example img{margin-left: 20px;margin-top: 5px;display: block;}
 .sum{margin-top: 15px;}
 .sum h3{font-size: 18px;font-weight: bold;color: #ccc;}
+<link href="http://static.to8to.com/css/start/decorate_learning_small_nav.css?v=1411159682" rel="stylesheet" type="text/css">
